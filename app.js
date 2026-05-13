@@ -1,22 +1,25 @@
 // ── Condition data ──────────────────────────────
-// faces: variants cycled by shuffle button
-// palettes: colour variants cycled by shuffle button (radial: centre → edge)
+// faces: cycled by shuffle — includes flower eyes ❀ ✿ ⚘ ❁ where fitting
+// palettes: radial gradient, centre → edge
+// orns: mixed weather symbols + insects (ψ ⋈ ≋ φ) + flowers (❀ ✿ ⚘ ❁)
 
 const CONDITIONS = {
   clear: {
     label: 'Clear',
     faces: [
       { eyes: '^',  mouth: '  ‿  ' },
+      { eyes: '❀',  mouth: '  ‿  ' },
       { eyes: '~',  mouth: '  ‿  ' },
+      { eyes: '✿',  mouth: '  ‿  ' },
       { eyes: '*',  mouth: '  ‿  ' },
-      { eyes: '>',  mouth: '  ‿  ' },
+      { eyes: '⚘',  mouth: '  ‿  ' },
     ],
     palettes: [
       ['#FFBA08', '#F4A261', '#cc5500', '#6B2800'],
       ['#FFD166', '#F8961E', '#E76F51', '#8B3A1A'],
       ['#FCA311', '#E07A00', '#B85C00', '#5C2500'],
     ],
-    orns: ['✦', '·', '☀', '°', '·', '✦', '°', '·', '✦', '·', '☀', '°'],
+    orns: ['❀', '·', '✿', '⊹', '·', '❁', '·', '⚘', '✦', '·', '❀', '✿'],
   },
   overcast: {
     label: 'Overcast',
@@ -25,13 +28,15 @@ const CONDITIONS = {
       { eyes: '=',  mouth: '  _  ' },
       { eyes: '~',  mouth: '  _  ' },
       { eyes: '─',  mouth: '  _  ' },
+      { eyes: 'ψ',  mouth: '  _  ' },
+      { eyes: '·',  mouth: '  _  ' },
     ],
     palettes: [
       ['#9A8C98', '#4A4E69', '#2D2D44', '#0f0f1e'],
       ['#8B9EB7', '#4A5568', '#2D3748', '#111827'],
       ['#A0A0A0', '#606060', '#303030', '#101010'],
     ],
-    orns: ['·', '░', '·', '▒', '·', '░', '·', '▒', '·', '░', '·', '▒'],
+    orns: ['ψ', '·', '░', '≋', '·', '▒', '·', 'ψ', '░', '·', '≋', '·'],
   },
   rain: {
     label: 'Rain',
@@ -39,44 +44,50 @@ const CONDITIONS = {
       { eyes: ';',  mouth: '  ⌣  ' },
       { eyes: 'T',  mouth: '  ⌣  ' },
       { eyes: ':',  mouth: '  ⌣  ' },
+      { eyes: '⚘',  mouth: '  ⌣  ' },
       { eyes: '>',  mouth: '  <  ' },
+      { eyes: '~',  mouth: '  ⌣  ' },
     ],
     palettes: [
       ['#A8DADC', '#457B9D', '#1D3557', '#06111f'],
       ['#90E0F0', '#2980B9', '#1A5276', '#0A2030'],
       ['#76B9C9', '#3A7CA5', '#1B4F72', '#071828'],
     ],
-    orns: ['|', '·', '|', '⌇', '·', '|', '·', '⌇', '|', '·', '⌇', '|'],
+    orns: ['≋', '|', '·', '⌇', '≋', '|', '·', 'φ', '|', '⌇', '·', '≋'],
   },
   fog: {
     label: 'Fog',
     faces: [
       { eyes: '·',  mouth: '  ‿  ' },
+      { eyes: '⚘',  mouth: '  ‿  ' },
       { eyes: 'o',  mouth: '  ‿  ' },
-      { eyes: 'O',  mouth: '  ‿  ' },
+      { eyes: '❁',  mouth: '  ‿  ' },
       { eyes: '~',  mouth: '  ‿  ' },
+      { eyes: '❀',  mouth: '  ‿  ' },
     ],
     palettes: [
       ['#E8E8E4', '#C9C9C0', '#8B8B7A', '#4a4a3a'],
       ['#DDDDD0', '#BCBCAD', '#787868', '#3a3a2a'],
       ['#EEEEE8', '#D0D0C0', '#969688', '#585848'],
     ],
-    orns: ['·', '░', '·', '·', '░', '·', '·', '·', '░', '·', '·', '·'],
+    orns: ['⚘', '·', '░', '❁', '·', 'φ', '⚘', '·', '░', '❁', '·', '·'],
   },
   snow: {
     label: 'Snow',
     faces: [
       { eyes: '°',  mouth: '  o  ' },
+      { eyes: '❄',  mouth: '  o  ' },
       { eyes: '*',  mouth: '  o  ' },
+      { eyes: '✿',  mouth: '  ‿  ' },
       { eyes: '+',  mouth: '  o  ' },
-      { eyes: 'o',  mouth: '  ‿  ' },
+      { eyes: '❀',  mouth: '  ‿  ' },
     ],
     palettes: [
       ['#E0F7FA', '#90E0EF', '#4a6fa5', '#1a2a40'],
       ['#F0F8FF', '#B0D8F0', '#6090C0', '#203050'],
       ['#DDEEFF', '#A8C8E8', '#5080A0', '#182838'],
     ],
-    orns: ['*', '·', '*', '°', '❄', '·', '*', '°', '·', '❄', '*', '·'],
+    orns: ['❄', '·', '✿', '°', '⊹', '❁', '*', '°', '❄', '·', '✿', '*'],
   },
   storm: {
     label: 'Storm',
@@ -84,54 +95,138 @@ const CONDITIONS = {
       { eyes: '☉',  mouth: '  ▽  ' },
       { eyes: '◎',  mouth: '  ▽  ' },
       { eyes: '⊙',  mouth: '  ▽  ' },
+      { eyes: '⋈',  mouth: '  ▽  ' },
       { eyes: 'O',  mouth: '  ▽  ' },
+      { eyes: '⊛',  mouth: '  ▽  ' },
     ],
     palettes: [
       ['#6B17A8', '#3C096C', '#10002B', '#000005'],
       ['#8B00FF', '#4B0082', '#1A0050', '#050010'],
       ['#9B27AF', '#5B0A7A', '#200040', '#080008'],
     ],
-    orns: ['⚡', '·', '⚡', '·', '⚡', '·', '⚡', '·', '⚡', '·', '⚡', '·'],
+    orns: ['⚡', '⋈', '⚡', '·', '⌁', '⚡', 'ψ', '⋈', '⚡', '·', '⌁', '⚡'],
   },
 };
 
 const POETRY = {
   clear: [
+    // hope
     'the light arrived without asking',
     'something warm remembers you',
-    'even the air is a kind of gold',
-    'open your eyes a little wider today',
+    'every surface is being given a second chance',
+    // wonder
+    'who taught the light to move like that',
+    'the sun has opinions about your skin',
+    // stillness
+    'just this. just now. just warm.',
+    // despair
+    'even brightness is a kind of waiting',
+    'the light is very beautiful and will not stay',
+    // absurdity
+    'the sun has been running this exact route for four billion years and still shows up',
+    'optimal conditions. whatever that means.',
+    'something is happening and it might be good',
+    // desire
+    'you are being heated from the outside in',
   ],
   overcast: [
+    // stillness
     'the sky is practising patience',
+    'nothing is happening. this counts.',
+    // despair
     'grey is not absence. grey is held breath',
+    'the light has gone somewhere private',
+    'this is the colour of a day that has given up on being remarkable',
+    // hope
     'something is coming. stay soft',
     'the clouds are thinking about you',
+    // absurdity
+    'the clouds are in a meeting. agenda unknown.',
+    'the sun is still there. statistically.',
+    'the sky has committed to a vibe and is seeing it through',
+    // uncertainty
+    'maybe it will pass. maybe this is the whole day.',
+    'it is neither one thing nor the other and that is fine',
   ],
   rain: [
-    'the sky is crying very softly',
+    // hope
     'everything is being rinsed',
     'water knows where it is going',
+    // stillness
     'let it land on you',
+    // wonder
+    'where does the water go when it remembers it is the ocean',
+    'the rain has been rehearsing this since before you were born',
+    // despair
+    'the sky is crying. it has been at this for hours.',
+    'something is being washed away that you needed',
+    'even the air is wet with something unresolved',
+    // absurdity
+    'the rain does not know your plans',
+    'you are mostly water. you should feel at home.',
+    'it is raining on everything equally and without preference',
+    // uncertainty
+    'is this sadness or just weather',
   ],
   fog: [
-    'the edge of the world has moved closer',
-    'you are not lost. the map has dissolved',
-    'visibility: sufficient',
+    // wonder
     'breathe in what you cannot see',
+    'the world is practising being a secret',
+    // despair
+    'the edge of the world has moved closer',
+    'you are not lost. the map has dissolved.',
+    'something at the periphery has gone soft',
+    // hope
+    'you are not lost. you are arriving differently.',
+    // stillness
+    'visibility: sufficient',
+    // absurdity
+    'your outline is becoming optional',
+    'the fog does not care what is inside it',
+    'everything is here somewhere, approximately',
+    // uncertainty
+    'you cannot see very far and maybe that is information',
   ],
   snow: [
-    'the air is forgetting to be loud',
-    'even the streets are hushed now',
-    'something is being covered gently',
+    // hope
     'begin again, under white',
+    'every surface is being given a second chance',
+    // stillness
+    'even the streets are hushed now',
+    'the air is forgetting to be loud',
+    // wonder
+    'something is being covered gently',
+    'the sky is malfunctioning beautifully',
+    // despair
+    'the cold has opinions about staying',
+    'things are being buried quietly and without announcement',
+    // absurdity
+    'it is raining very slowly and very wrongly',
+    'the sky ran out of ideas and defaulted to white',
+    'it might stop. it might not. it is doing its thing.',
+    // uncertainty
+    'underneath all this, something is still alive',
   ],
   storm: [
-    '⚡ the sky has an opinion',
+    // wonder
     '⚡ you are standing inside a living thing',
-    '⚡ count the seconds. it is not far',
+    '⚡ the sky has an opinion and it is very loud',
+    '⚡ the thunder is the atmosphere being surprised by itself',
+    // hope
+    '⚡ after this, the air will remember how to be clean',
+    '⚡ here it comes. stay open.',
+    // despair
+    '⚡ even the sky is breaking open today',
+    '⚡ something has been held too long and is releasing now',
+    // stillness
+    '⚡ count the seconds. it is not far.',
+    // absurdity
+    '⚡ lightning is just the sky doing its stretches',
+    '⚡ the thunder does not need your attention but it has it',
+    '⚡ somewhere, someone left a window open',
+    // uncertainty
+    '⚡ something has decided and you do not know what yet',
     '⚡ the thunder remembers something you forgot',
-    '⚡ here it comes. stay open',
   ],
 };
 
@@ -195,13 +290,24 @@ function setGradient(palette) {
   bg.style.setProperty('--c4', palette[3]);
 }
 
-// ── Face ────────────────────────────────────────
+// ── Body texture ────────────────────────────────
 
-function setFace(face) {
-  document.getElementById('left-eye').textContent   = face.eyes;
-  document.getElementById('face-mouth').textContent = face.mouth;
-  document.getElementById('right-eye').textContent  = face.eyes;
-  startBlink(face.eyes);
+function generateTexture() {
+  const el = document.getElementById('body-texture');
+  if (!el) return;
+  const rows = 32, cols = 58;
+  let text = '';
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const rnd = Math.random();
+      if      (rnd < 0.04)  text += '░';
+      else if (rnd < 0.055) text += '▒';
+      else if (rnd < 0.07)  text += '·';
+      else                  text += ' ';
+    }
+    text += '\n';
+  }
+  el.textContent = text;
 }
 
 // ── Scatter canvas ──────────────────────────────
@@ -233,6 +339,26 @@ function initScatter() {
   setInterval(draw, 3500);
 }
 
+// ── Twinkling ASCII dots ─────────────────────────
+
+function initTwinkle() {
+  const layer = document.getElementById('twinkle-layer');
+  const chars = ['.', '·', '°', '∘', '.', '·', '·', '.', '°', '*', '+', '.', '·', '°', '.'];
+  const count = 60;
+
+  for (let i = 0; i < count; i++) {
+    const s = document.createElement('span');
+    s.className = 'twinkle';
+    s.textContent = chars[Math.floor(Math.random() * chars.length)];
+    s.style.left             = `${Math.random() * 100}%`;
+    s.style.top              = `${Math.random() * 100}%`;
+    s.style.fontSize         = `${0.45 + Math.random() * 0.55}rem`;
+    s.style.animationDuration = `${2.5 + Math.random() * 6}s`;
+    s.style.animationDelay   = `${Math.random() * 7}s`;
+    layer.appendChild(s);
+  }
+}
+
 // ── Ornaments ───────────────────────────────────
 
 const ORN_POSITIONS = [
@@ -258,10 +384,19 @@ function placeOrnaments(orns) {
     s.className = 'orn';
     s.textContent = orns[i % orns.length];
     Object.assign(s.style, pos);
-    s.style.animationDuration = `${4 + Math.random() * 5}s`;
-    s.style.animationDelay   = `${Math.random() * 4}s`;
+    s.style.animationDuration = `${5 + Math.random() * 7}s`;
+    s.style.animationDelay   = `${Math.random() * 5}s`;
     el.appendChild(s);
   });
+}
+
+// ── Face ────────────────────────────────────────
+
+function setFace(face) {
+  document.getElementById('left-eye').textContent   = face.eyes;
+  document.getElementById('face-mouth').textContent = face.mouth;
+  document.getElementById('right-eye').textContent  = face.eyes;
+  startBlink(face.eyes);
 }
 
 // ── Blink ───────────────────────────────────────
@@ -343,10 +478,9 @@ function shuffle() {
 // ── UI ──────────────────────────────────────────
 
 function updateUI({ key, temp, rain, thunder, uv, lat, lon, place }) {
-  const cond = CONDITIONS[key];
+  const cond  = CONDITIONS[key];
   _currentKey = key;
 
-  // Reset shuffle indices on fresh weather load
   _idx[key].face    = 0;
   _idx[key].palette = 0;
 
@@ -438,6 +572,8 @@ async function load(location) {
 // ── Init ────────────────────────────────────────
 
 initScatter();
+initTwinkle();
+generateTexture();
 
 document.getElementById('search-btn').addEventListener('click', () => {
   const v = document.getElementById('location-input').value.trim();

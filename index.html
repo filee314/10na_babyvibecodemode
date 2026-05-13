@@ -12,6 +12,7 @@
   <div class="bg"></div>
   <canvas id="scatter"></canvas>
   <div class="grain"></div>
+  <div class="twinkle-layer" id="twinkle-layer"></div>
   <div id="flash"></div>
 
   <main>
@@ -29,6 +30,8 @@
       </div>
 
       <div class="bmo-body">
+        <pre class="body-texture" id="body-texture" aria-hidden="true"></pre>
+
         <div class="bmo-screen">
           <div id="face" class="face"><span id="left-eye" class="eye">^</span><span id="face-mouth">  ‿  </span><span id="right-eye" class="eye">^</span></div>
           <div class="rule">──────────────────────────────</div>
@@ -47,19 +50,28 @@
         </div>
 
         <div class="bmo-lower">
-          <span class="bmo-name">10Na</span>
-          <div class="buttons">
-            <span class="btn-cross">✦</span>
-            <span class="btn-tri">△</span>
-            <span class="btn-dot">●</span>
-            <span class="btn-bar">━━  ━━</span>
+          <div class="lower-left">
+            <span class="bmo-name">10Na</span>
+            <div class="small-buttons">
+              <span class="btn-cross">✦</span>
+              <span class="btn-tri">△</span>
+              <span class="btn-dot">●</span>
+            </div>
+          </div>
+
+          <button class="shuffle-btn" id="shuffle-btn" title="shuffle">⏻</button>
+
+          <div class="lower-right">
+            <div class="btn-bars">
+              <span>━━</span>
+              <span>━━</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div id="ornaments"></div>
-    <button class="shuffle-btn" id="shuffle-btn" title="shuffle">⏻</button>
     <div class="status" id="status">connecting · open-meteo.com</div>
   </main>
 
