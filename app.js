@@ -230,6 +230,29 @@ const POETRY = {
   ],
 };
 
+// ── Local clock ─────────────────────────────────
+
+let _clockInterval = null;
+
+function startClock(timezone) {
+  clearInterval(_clockInterval);
+  const el = document.getElementById('local-time');
+  if (!el) return;
+
+  function tick() {
+    el.textContent = new Date().toLocaleTimeString('en-GB', {
+      timeZone: timezone,
+      hour:   '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+    });
+  }
+
+  tick();
+  _clockInterval = setInterval(tick, 1000);
+}
+
 // ── Shuffle state ───────────────────────────────
 
 let _currentKey = 'overcast';
@@ -477,7 +500,7 @@ function shuffle() {
 
 // ── UI ──────────────────────────────────────────
 
-function updateUI({ key, temp, rain, thunder, uv, lat, lon, place }) {
+function updateUI({ key, temp, rain, thunder, uv, lat, lon, place, timezone }) {
   const cond  = CONDITIONS[key];
   _currentKey = key;
 
@@ -500,6 +523,8 @@ function updateUI({ key, temp, rain, thunder, uv, lat, lon, place }) {
   tEl.textContent = `⚡ ${thunder}%`;
   const isHot = thunder >= 20 || key === 'storm';
   tEl.classList.toggle('hot', isHot);
+
+  startClock(timezone);
 
   const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   setStatus(`live · open-meteo.com · ${time}`);
@@ -543,10 +568,11 @@ async function fetchWeather(location) {
   const uv   = wData.hourly?.uv_index?.[hour] ?? 0;
 
   return {
-    key:     codeToKey(code),
+    key:      codeToKey(code),
     temp, rain, uv, lat, lon,
-    thunder: capeToThunder(cape, code),
-    place:   `${name}, ${country_code?.toUpperCase() ?? ''}`,
+    thunder:  capeToThunder(cape, code),
+    place:    `${name}, ${country_code?.toUpperCase() ?? ''}`,
+    timezone: wData.timezone ?? 'UTC',
   };
 }
 
